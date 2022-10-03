@@ -1,2 +1,2 @@
-# Nodejs-JwtTokenAuthentication-Coordinated-NearbyLocation
+# Nodejs-JwtTokenAuthentication-Location Coordinates-NearbyLocation
 In this project i have added jwt token authentication with location coordinated (full ecommerce website api's)
