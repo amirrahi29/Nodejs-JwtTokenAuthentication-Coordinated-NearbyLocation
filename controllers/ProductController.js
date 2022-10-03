@@ -80,8 +80,49 @@ const search_product = async(req,res)=>{
     }
 }
 
+const paginate_products = async(req,res)=>{
+    try {
+
+        var page = req.body.page;
+        var sort = req.body.sort;
+
+        //page limit
+        var pageLimit = 2;
+
+        var productData;
+        var skip;
+        if(page<=1){
+            skip = 0;
+        }else{
+            skip = (page-1)*pageLimit;
+        }
+
+        if(sort){
+            var customsort;
+            if(sort == 'name'){
+                customsort = {
+                    name:1,
+                }
+            }
+            else if(sort == '_id'){
+                customsort = {
+                    _id:1,
+                }
+            }
+            productData = await Product.find().sort(customsort).skip(skip).limit(pageLimit);
+        }else{
+            productData = await Product.find().skip(skip).limit(pageLimit);
+        }
+        res.status(200).send({success:true,msg:"Product details",data:productData});
+        
+    } catch (error) {
+        res.status(400).send({success:false,msg:error.message});
+    }
+}
+
 module.exports = {
     add_product,
     get_products,
-    search_product
+    search_product,
+    paginate_products
 }

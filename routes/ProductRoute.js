@@ -33,5 +33,6 @@ const productController = require("../controllers/ProductController");
 product_route.post('/add_product',upload.array('images'),auth,productController.add_product);
 product_route.post('/get_products',auth,productController.get_products);
 product_route.post('/search_product',auth,productController.search_product);
+product_route.post('/paginate_products',auth,productController.paginate_products);
 
 module.exports = product_route;
