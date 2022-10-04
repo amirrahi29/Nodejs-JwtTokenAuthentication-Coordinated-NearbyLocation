@@ -62,7 +62,9 @@ const register_user = async(req,res)=>{
     try{
 
         const sPassword = await securePassword(req.body.password);
-        const tokenData = await createToken(user_data._id);
+
+        const randomString = randomstring.generate();
+        const tokenData = await createToken(randomString);
 
         const user = new User({
             name: req.body.name,
