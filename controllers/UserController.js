@@ -62,6 +62,7 @@ const register_user = async(req,res)=>{
     try{
 
         const sPassword = await securePassword(req.body.password);
+        const tokenData = await createToken(user_data._id);
 
         const user = new User({
             name: req.body.name,
@@ -69,7 +70,8 @@ const register_user = async(req,res)=>{
             password: sPassword,
             image: req.file.filename,
             mobile:req.body.mobile,
-            type:req.body.type
+            type:req.body.type,
+            token:tokenData
         });
 
         //if user already available
