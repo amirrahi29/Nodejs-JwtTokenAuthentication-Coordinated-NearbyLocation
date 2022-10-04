@@ -7,6 +7,9 @@ app.use(cors());
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://rojkharido:rojkharido123@cluster0.inawa.mongodb.net/nine_mm?retryWrites=true&w=majority");
 
+//access of images
+app.use("/public",express.static('public'));
+
 //user routes
 const user_routes = require("./routes/UserRoute");
 app.use('/api',user_routes);
