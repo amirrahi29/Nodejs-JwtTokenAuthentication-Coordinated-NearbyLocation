@@ -43,7 +43,7 @@ app.use('/api',address_routes);
 const buy_routes = require("./routes/BuyProductRoute");
 app.use('/api',buy_routes);
 
-app.listen(process.env.PORT,function(){
+app.listen(process.env.PORT || 1000,function(){
     console.log("Server is ready");
 });
 
