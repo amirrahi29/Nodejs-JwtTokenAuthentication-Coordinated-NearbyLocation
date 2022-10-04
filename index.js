@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/nine_mm");
+mongoose.connect("mongodb+srv://rojkharido:rojkharido123@cluster0.inawa.mongodb.net/nine_mm?retryWrites=true&w=majority");
 
 //user routes
 const user_routes = require("./routes/UserRoute");
