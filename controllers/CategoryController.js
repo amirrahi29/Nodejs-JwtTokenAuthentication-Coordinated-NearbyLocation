@@ -41,7 +41,7 @@ const add_category = async(req,res) =>{
 
 const getCategories = async()=>{
     try {
-        return Category.find();
+        return await Category.find();
     } catch (error) {
         res.status(400).send({success:false,mesg:error.message});
     }

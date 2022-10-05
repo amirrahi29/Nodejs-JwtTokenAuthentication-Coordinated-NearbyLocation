@@ -43,7 +43,7 @@ const add_sub_category = async(req,res)=>{
 
 const getSubCategories = async()=>{
     try {
-        return SubCategory.find();
+        return await SubCategory.find();
     } catch (error) {
         res.status(400).send({success:false,mesg:error.message});
     }
