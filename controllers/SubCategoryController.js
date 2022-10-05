@@ -41,6 +41,15 @@ const add_sub_category = async(req,res)=>{
 
 }
 
+const getSubCategories = async()=>{
+    try {
+        return SubCategory.find();
+    } catch (error) {
+        res.status(400).send({success:false,mesg:error.message});
+    }
+}
+
 module.exports = {
-    add_sub_category
+    add_sub_category,
+    getSubCategories
 }
