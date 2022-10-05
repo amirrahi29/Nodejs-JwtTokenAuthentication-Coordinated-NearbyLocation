@@ -41,7 +41,16 @@ const add_category = async(req,res) =>{
 
 const getCategories = async()=>{
     try {
-        return await Category.find();
+        return Category.find();
+    } catch (error) {
+        res.status(400).send({success:false,mesg:error.message});
+    }
+}
+
+const allCategories = async(req,res)=>{
+    try {
+        const categoryData = await Category.find();
+        res.status(200).send({success:true,mesg:"Category data",data:categoryData});
     } catch (error) {
         res.status(400).send({success:false,mesg:error.message});
     }
@@ -49,5 +58,5 @@ const getCategories = async()=>{
 
 module.exports = {
     add_category,
-    getCategories
+    allCategories
 }
